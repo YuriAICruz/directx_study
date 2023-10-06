@@ -1,4 +1,4 @@
-#include <Windows.h>
+#include "ModWindows.h"
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
