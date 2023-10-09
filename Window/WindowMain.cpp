@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include "Test.h"
 #include "src/Window.h"
 
 int WINAPI WinMain(
@@ -12,9 +11,6 @@ int WINAPI WinMain(
     Window wnd(800,300, L"Window View");
     MSG msg;
     BOOL gResult;
-
-    Test test = {};
-    std::cout << test.Tester();
 
     while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
     {
