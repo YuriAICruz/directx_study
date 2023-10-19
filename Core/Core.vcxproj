@@ -240,6 +240,7 @@
     <ClInclude Include="src\ModExports.h" />
     <ClInclude Include="src\ModWindows.h" />
     <ClInclude Include="src\Test.h" />
+    <ClInclude Include="src\WstrExtensions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

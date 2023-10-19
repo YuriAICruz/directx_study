@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "WstrExtensions.h"
 #include "src/Window.h"
 
 void openConsole()
@@ -24,7 +25,6 @@ int WINAPI WinMain(
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
-            throw CORE_EXCEPTION();
         }
 
         if (gResult == -1)
@@ -36,11 +36,11 @@ int WINAPI WinMain(
     }
     catch (const CoreException& e)
     {
-        MessageBox(nullptr, reinterpret_cast<LPCWSTR>(e.what()), reinterpret_cast<LPCWSTR>(e.GetType()), MB_OK | MB_ICONEXCLAMATION);
+        MessageBox(nullptr, WstrExtensions::StrToWstr(e.what()).c_str(), WstrExtensions::StrToWstr(e.GetType()).c_str(), MB_OK | MB_ICONEXCLAMATION);
     }
     catch (const std::exception& e)
     {
-        MessageBox(nullptr, reinterpret_cast<LPCWSTR>(e.what()), L"Standard Exception", MB_OK | MB_ICONEXCLAMATION);
+        MessageBox(nullptr, WstrExtensions::StrToWstr(e.what()).c_str(), L"Standard Exception", MB_OK | MB_ICONEXCLAMATION);
     }
     catch (...)
     {

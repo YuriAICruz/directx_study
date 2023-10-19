@@ -16,7 +16,7 @@ const char* CoreException::what() const noexcept
 
 const char* CoreException::GetType() const noexcept
 {
-    return "ChiliException";
+    return "Core Exception";
 }
 
 
