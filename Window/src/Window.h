@@ -1,8 +1,23 @@
 ﻿#pragma once
+#include "CoreException.h"
 #include "ModWindows.h"
 
 class Window
 {
+public:
+    class Exception : public CoreException
+    {
+    public:
+        Exception(int line, const char* file, HRESULT hr) noexcept;
+        const char* what() const noexcept override;
+        const char* GetType() const noexcept override;
+        static std::string TranslateErrorCode(HRESULT hr) noexcept;
+        HRESULT GetErrorCode() const noexcept;
+        std::string GetErrorString() const noexcept;
+    private:
+        HRESULT hr;
+    };
+
 private:
     class WindowClass
     {
@@ -33,3 +48,5 @@ private:
     int height;
     HWND hWnd;
 };
+
+#define WIN_EXCEPTION(hr) Window::Exception(__LINE__, __FILE__, hr)
