@@ -4,6 +4,7 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 /.idea/
+.idea/
 Debug/
 # Prerequisites
 *.d
