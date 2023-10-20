@@ -5,6 +5,7 @@ riderModule.iml
 /_ReSharper.Caches/
 /.idea/
 .idea/
+.vs/
 Debug/
 # Prerequisites
 *.d
