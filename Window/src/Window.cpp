@@ -97,7 +97,11 @@ Window::Window(int width, int height, LPCWSTR name) noexcept
     wr.right = width + wr.left;
     wr.top = 100;
     wr.bottom = height + wr.top;
-    AdjustWindowRect(&wr, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
+
+    if (AdjustWindowRect(&wr, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE) == 0)
+    {
+        throw WIN_EXCEPTION_LAST();
+    }
 
     hWnd = CreateWindow(
         WindowClass::GetName(), name,
@@ -105,6 +109,11 @@ Window::Window(int width, int height, LPCWSTR name) noexcept
         CW_USEDEFAULT, CW_USEDEFAULT, wr.right - wr.left, wr.bottom - wr.top,
         nullptr, nullptr, WindowClass::GetInstance(), this
     );
+
+    if(hWnd == nullptr)
+    {
+        throw WIN_EXCEPTION_LAST();
+    }
 
     ShowWindow(hWnd, SW_SHOWDEFAULT);
 }
