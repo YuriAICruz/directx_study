@@ -1,4 +1,5 @@
 ﻿#include "Window.h"
+#include "../resource.h"
 #include <ostream>
 #include <sstream>
 
@@ -62,12 +63,12 @@ Window::WindowClass::WindowClass() noexcept : hInst(GetModuleHandle(nullptr))
     wc.cbClsExtra = 0;
     wc.cbWndExtra = 0;
     wc.hInstance = GetInstance();
-    wc.hIcon = nullptr;
+    wc.hIcon = static_cast<HICON>(LoadImage(hInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16,16,0));
     wc.hCursor = nullptr;
     wc.hbrBackground = nullptr;
     wc.lpszMenuName = nullptr;
     wc.lpszClassName = GetName();
-    wc.hIconSm = nullptr;
+    wc.hIconSm = static_cast<HICON>(LoadImage(hInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 128,128,0));
     RegisterClassEx(&wc);
 }
 
@@ -87,7 +88,7 @@ HINSTANCE Window::WindowClass::GetInstance() noexcept
 }
 
 
-Window::Window(int width, int height, LPCWSTR name) noexcept
+Window::Window(int width, int height, LPCWSTR name)
 {
     Window::height = height;
     Window::width = width;
