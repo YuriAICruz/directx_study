@@ -13,6 +13,11 @@ public:
         return result;
     }
     
+    static LPARAM WstrToLparam(const wchar_t* string) noexcept
+    {
+        return LPARAM((LPCTSTR)string);
+    }
+    
     static std::wstring StrToWstr(char* str) noexcept
     {
         std::string s = str;
