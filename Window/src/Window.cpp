@@ -3,7 +3,6 @@
 #include <ostream>
 #include <sstream>
 
-
 Window::Exception::Exception(int line, const char* file, HRESULT hr) noexcept : CoreException(line, file), hr(hr)
 {
 }
@@ -111,7 +110,7 @@ Window::Window(int width, int height, LPCWSTR name)
         nullptr, nullptr, WindowClass::GetInstance(), this
     );
 
-    if(hWnd == nullptr)
+    if (hWnd == nullptr)
     {
         throw WIN_EXCEPTION_LAST();
     }
@@ -149,6 +148,7 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
     switch (msg)
     {
     case WM_CLOSE:
+        OutputDebugString(L"Closing");
         PostQuitMessage(0);
         return 0;
     }
