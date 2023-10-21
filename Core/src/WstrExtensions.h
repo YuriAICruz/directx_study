@@ -23,6 +23,6 @@ public:
     {
         std::wstring result = std::wstring(str.begin(), str.end());
 
-        return result.c_str();
+        return result;
     }
 };
