@@ -1,11 +1,6 @@
 #include <iostream>
-
 #include "WstrExtensions.h"
 #include "src/Window.h"
-
-void openConsole()
-{
-}
 
 int WINAPI WinMain(
     HINSTANCE hInstance,
