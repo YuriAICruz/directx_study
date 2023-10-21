@@ -19,8 +19,6 @@ int WINAPI WinMain(
         MSG msg;
         BOOL gResult;
 
-        openConsole();
-
         while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
         {
             TranslateMessage(&msg);
