@@ -7,6 +7,12 @@
 static class CORE_API WstrExtensions
 {
 public:
+    static std::wstring LparamToWstr(LPARAM lparam) noexcept
+    {
+        std::wstring result = std::wstring((LPCTSTR)lparam);
+        return result;
+    }
+    
     static std::wstring StrToWstr(char* str) noexcept
     {
         std::string s = str;
