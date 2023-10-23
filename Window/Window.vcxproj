@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\KeyboardWrapper.cpp" />
     <ClCompile Include="src\MouseWrapper.cpp" />
     <ClCompile Include="src\Window.cpp" />
@@ -177,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="src\App.h" />
     <ClInclude Include="src\KeyboardWrapper.h" />
     <ClInclude Include="src\MouseWrapper.h" />
     <ClInclude Include="src\Window.h" />

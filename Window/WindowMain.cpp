@@ -1,6 +1,6 @@
 #include <iostream>
 #include "WstrExtensions.h"
-#include "src/Window.h"
+#include "src/App.h"
 
 int WINAPI WinMain(
     HINSTANCE hInstance,
@@ -10,22 +10,7 @@ int WINAPI WinMain(
 {
     try
     {
-        Window wnd(800, 300, L"Window View");
-        MSG msg;
-        BOOL gResult;
-
-        while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-
-        if (gResult == -1)
-        {
-            return gResult;
-        }
-
-        return msg.wParam;
+        return App{}.Go();
     }
     catch (const CoreException& e)
     {
