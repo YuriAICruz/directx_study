@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "CoreException.h"
+#include "KeyboardWrapper.h"
 #include "ModWindows.h"
 
 class Window
@@ -44,6 +45,7 @@ private:
     static LRESULT WINAPI HandleMsgTrunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
     LRESULT HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 
+    KeyboardWrapper kbd;
     int width;
     int height;
     HWND hWnd;
