@@ -2,6 +2,7 @@
 #include "CoreException.h"
 #include "KeyboardWrapper.h"
 #include "ModWindows.h"
+#include "MouseWrapper.h"
 
 class Window
 {
@@ -46,6 +47,7 @@ private:
     LRESULT HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 
     KeyboardWrapper kbd;
+    MouseWrapper mouse;
     int width;
     int height;
     HWND hWnd;
