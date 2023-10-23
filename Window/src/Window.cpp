@@ -151,6 +151,9 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
         OutputDebugString(L"Closing");
         PostQuitMessage(0);
         return 0;
+    case WM_KILLFOCUS:
+        kbd.ClearState();
+        break;
 
     case WM_KEYDOWN:
         kbd.OnKeyPressed(static_cast<unsigned char>(wParam));
