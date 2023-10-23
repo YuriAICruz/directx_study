@@ -123,6 +123,30 @@ Window::~Window()
     DestroyWindow(hWnd);
 }
 
+void Window::SetTitle(const std::wstring& title)
+{
+    if (SetWindowText(hWnd, title.c_str()) == 0)
+    {
+        throw WIN_EXCEPTION_LAST();
+    }
+}
+
+std::optional<int> Window::ProcessMessage() noexcept
+{
+    MSG msg;
+    while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE) > 0)
+    {
+        if (msg.message == WM_QUIT)
+        {
+            return (int)msg.wParam;
+        }
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    return {};
+}
+
 LRESULT Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {
     if (msg == WM_NCCREATE)
