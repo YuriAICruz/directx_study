@@ -156,7 +156,11 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
         break;
 
     case WM_KEYDOWN:
-        kbd.OnKeyPressed(static_cast<unsigned char>(wParam));
+        // lParam & 0x40000000 check if the key was down last event
+        if(!(lParam & 0x40000000) || kbd.AutorepeatIsEnabled())
+        {
+            kbd.OnKeyPressed(static_cast<unsigned char>(wParam));
+        }
         break;
     case WM_KEYUP:
         kbd.OnKeyReleased(static_cast<unsigned char>(wParam));
