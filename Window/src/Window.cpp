@@ -2,6 +2,7 @@
 #include "../resource.h"
 #include <ostream>
 #include <sstream>
+#include "WstrExtensions.h"
 
 Window::Exception::Exception(int line, const char* file, HRESULT hr) noexcept : CoreException(line, file), hr(hr)
 {
