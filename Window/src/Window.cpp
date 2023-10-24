@@ -25,17 +25,17 @@ const char* Window::Exception::GetType() const noexcept
 
 std::string Window::Exception::TranslateErrorCode(HRESULT hr) noexcept
 {
-    char* pMsgBuf = nullptr;
+    LPTSTR pMsgBuf = NULL;
     const DWORD nMsgLen = FormatMessage(
         FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
         nullptr, hr, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-        reinterpret_cast<LPWSTR>(&pMsgBuf), 0, nullptr
+        (LPTSTR)&pMsgBuf, 0, nullptr
     );
     if (nMsgLen == 0)
     {
         return "Unidentified error code";
     }
-    std::string errorString = pMsgBuf;
+    std::string errorString = WstrExtensions::LPWSTRToStr(pMsgBuf);
     LocalFree(pMsgBuf);
     return errorString;
 }
