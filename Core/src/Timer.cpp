@@ -4,6 +4,7 @@ using namespace std::chrono;
 
 Timer::Timer() noexcept
 {
+    start = steady_clock::now();
     last = steady_clock::now();
 }
 
@@ -18,4 +19,8 @@ float Timer::Mark() noexcept
 float Timer::Peek() const noexcept
 {
     return duration<float>(steady_clock::now() - last).count();
+}
+float Timer::FromStart() const noexcept
+{
+    return duration<float>(steady_clock::now() - start).count();
 }
