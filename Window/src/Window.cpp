@@ -88,11 +88,8 @@ HINSTANCE Window::WindowClass::GetInstance() noexcept
 }
 
 
-Window::Window(int width, int height, LPCWSTR name)
+Window::Window(int width, int height, LPCWSTR name) : height(height), width(width)
 {
-    Window::height = height;
-    Window::width = width;
-
     RECT wr;
     wr.left = 100;
     wr.right = width + wr.left;
@@ -117,6 +114,8 @@ Window::Window(int width, int height, LPCWSTR name)
     }
 
     ShowWindow(hWnd, SW_SHOWDEFAULT);
+
+    pGfx = std::make_unique<Graphics>(hWnd);
 }
 
 Window::~Window()
@@ -146,6 +145,11 @@ std::optional<int> Window::ProcessMessage() noexcept
     }
 
     return {};
+}
+
+Graphics& Window::Gfx()
+{
+    return *pGfx;
 }
 
 LRESULT Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept

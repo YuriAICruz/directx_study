@@ -21,4 +21,6 @@ int App::Go()
 void App::DoFrame()
 {
     auto dt = timer.Mark();
+    
+    wnd.Gfx().EndFrame();
 }

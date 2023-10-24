@@ -1,5 +1,7 @@
 ﻿#pragma once
+#include <memory>
 #include "CoreException.h"
+#include "Graphics.h"
 #include "KeyboardWrapper.h"
 #include "ModWindows.h"
 #include "MouseWrapper.h"
@@ -43,6 +45,7 @@ public:
     Window& operator=(const Window&) = delete;
 	void SetTitle(const std::wstring& title);
     static std::optional<int> ProcessMessage() noexcept;
+    Graphics& Gfx();
 private:
     static LRESULT WINAPI HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
     static LRESULT WINAPI HandleMsgTrunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
@@ -53,6 +56,7 @@ private:
     int width;
     int height;
     HWND hWnd;
+    std::unique_ptr<Graphics> pGfx;
 };
 
 #define WIN_EXCEPTION(hr) Window::Exception(__LINE__, __FILE__, hr)
