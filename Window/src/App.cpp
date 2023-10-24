@@ -2,8 +2,8 @@
 
 #include "WstrExtensions.h"
 
-App::App() : wnd(800,600, L"Engine")
-{    
+App::App() : wnd(800, 600, L"Engine")
+{
 }
 
 int App::Go()
