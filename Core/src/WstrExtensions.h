@@ -7,39 +7,43 @@
 static class CORE_API WstrExtensions
 {
 public:
-    static std::wstring LparamToWstr(LPARAM lparam) noexcept
+    static std::wstring LparamToWstr(LPARAM& lparam) noexcept
     {
         return std::wstring((LPCTSTR)lparam);
     }
 
-    static LPARAM WstrToLparam(const wchar_t* string) noexcept
+    static LPARAM WstrToLparam(const wchar_t*& string) noexcept
     {
         return LPARAM((LPCTSTR)string);
     }
 
-    static std::wstring StrToWstr(char* str) noexcept
+    static std::wstring StrToWstr(const char* str) noexcept
     {
         std::string s = str;
         return StrToWstr(s);
     }
 
-    static std::wstring StrToWstr(std::string str) noexcept
+    static std::wstring StrToWstr(std::string& str) noexcept
     {
         std::wstring result = std::wstring(str.begin(), str.end());
 
         return result;
     }
 
-    static std::wstring LPWSTRToWstr(LPWSTR lpwstr)
+    static std::wstring LPWSTRToWstr(LPWSTR& lpwstr)
     {
         return std::wstring(lpwstr);
     }
 
-    static std::string LPWSTRToStr(LPWSTR lpwstr)
+    static std::string LPWSTRToStr(LPWSTR& lpwstr)
     {
-        std::wstring ws(LPWSTRToWstr(lpwstr));
+        return WstrToStr(LPWSTRToWstr(lpwstr));
+    }
+
+    static std::string WstrToStr(const std::wstring& wstring)
+    {
         std::string result;
-        for (char x : ws)
+        for (char x : wstring)
             result += x;
         return result;
     }
