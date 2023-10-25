@@ -31,11 +31,15 @@ const std::string& CoreException::GetFile() const noexcept
     return file;
 }
 
-
 const std::string CoreException::GetOriginString() const noexcept
 {
     std::ostringstream oss;
     oss << "[line] " << line << std::endl
         << " [file] " << file;
     return oss.str();
+}
+
+const std::string CoreException::GetInfo() const noexcept
+{
+    return info;
 }
