@@ -145,5 +145,5 @@ void MouseWrapper::OneWheelDelta(int x, int y, int delta) noexcept
     
     std::ostringstream os;
     os << "wheelDeltaCarry " << wheelDeltaCarry << "\n";
-    OutputDebugStringW(WstrExtensions::StrToWstr(os.str()).c_str());
+    OutputDebugStringW(WstrExtensions::StrToWstr(os.str().c_str()).c_str());
 }
