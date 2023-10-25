@@ -1,7 +1,8 @@
 ﻿#include "Window.h"
-#include "../resource.h"
 #include <ostream>
 #include <sstream>
+#include "../resource.h"
+#include "WindowsThrowMacros.h"
 #include "WstrExtensions.h"
 
 Window::Exception::Exception(int line, const char* file, HRESULT hr) noexcept : CoreException(line, file), hr(hr)
