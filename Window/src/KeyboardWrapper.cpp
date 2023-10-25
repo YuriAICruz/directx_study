@@ -78,7 +78,7 @@ void KeyboardWrapper::OnKeyPressed(unsigned char keycode) noexcept
 {
     std::ostringstream os;
     os << "Key Pressed " << keycode << "\n";
-    OutputDebugString(WstrExtensions::StrToWstr(os.str()).c_str());
+    OutputDebugString(WstrExtensions::StrToWstr(os.str().c_str()).c_str());
     
     keystates[keycode] = true;
     keyBuffer.push(KeyboardWrapper::Event(KeyboardWrapper::Event::Type::Press, keycode));
@@ -89,7 +89,7 @@ void KeyboardWrapper::OnKeyReleased(unsigned char keycode) noexcept
 {
     std::ostringstream os;
     os << "Key Released " << keycode << "\n";
-    OutputDebugStringW(WstrExtensions::StrToWstr(os.str()).c_str());
+    OutputDebugStringW(WstrExtensions::StrToWstr(os.str().c_str()).c_str());
     
     keystates[keycode] = false;
     keyBuffer.push(KeyboardWrapper::Event(KeyboardWrapper::Event::Type::Release, keycode));
@@ -100,7 +100,7 @@ void KeyboardWrapper::OnChar(char character) noexcept
 {
     std::ostringstream os;
     os << "Char received " << character << "\n";
-    OutputDebugStringW(WstrExtensions::StrToWstr(os.str()).c_str());
+    OutputDebugStringW(WstrExtensions::StrToWstr(os.str().c_str()).c_str());
 
     charBuffer.push(character);
     TrimBuffer(charBuffer);
