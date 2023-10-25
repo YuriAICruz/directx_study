@@ -7,6 +7,7 @@ riderModule.iml
 .idea/
 .vs/
 Debug/
+Release/
 # Prerequisites
 *.d
 
