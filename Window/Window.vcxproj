@@ -165,6 +165,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\DxgiInfoManager.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
     <ClCompile Include="src\KeyboardWrapper.cpp" />
     <ClCompile Include="src\MouseWrapper.cpp" />
@@ -180,10 +181,13 @@
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\App.h" />
+    <ClInclude Include="src\DxgiInfoManager.h" />
     <ClInclude Include="src\Graphics.h" />
+    <ClInclude Include="src\GraphicsThrowMacros.h" />
     <ClInclude Include="src\KeyboardWrapper.h" />
     <ClInclude Include="src\MouseWrapper.h" />
     <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\WindowsThrowMacros.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Window.rc" />
