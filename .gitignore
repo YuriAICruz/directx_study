@@ -16,6 +16,7 @@ Release/
 *.lo
 *.o
 *.obj
+*.cso
 
 # Precompiled Headers
 *.gch
