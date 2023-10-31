@@ -52,7 +52,7 @@ void MouseWrapper::Flush() noexcept
     buffer = std::queue<Event>();
 }
 
-void MouseWrapper::OnMousMove(int X, int Y) noexcept
+void MouseWrapper::OnMouseMove(int X, int Y) noexcept
 {
     x = X;
     y = Y;
