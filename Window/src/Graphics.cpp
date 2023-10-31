@@ -29,7 +29,7 @@ Graphics::Graphics(HWND hwnd)
     sd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
     sd.Flags = 0;
 
-    HRESULT result = D3D11CreateDeviceAndSwapChain(
+    HRESULT hr = D3D11CreateDeviceAndSwapChain(
         nullptr,
         D3D_DRIVER_TYPE_HARDWARE,
         nullptr,
@@ -46,31 +46,19 @@ Graphics::Graphics(HWND hwnd)
 
 	OutputDebugStringW(L"Error\n");
 	
-    if (result != 0)
+    if (hr != 0)
     {
-        throw GFX_EXCEPT(result);
+        throw GFX_EXCEPT(hr);
     }
 
     Microsoft::WRL::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
-    result = pSwap->GetBuffer(0, __uuidof(ID3D11Resource), &pBackBuffer);
-	
-	if (result != 0)
-	{
-		throw GFX_EXCEPT(result);
-	}
-	
-    result = pDevice->CreateRenderTargetView(
+    GFX_THROW_INFO( pSwap->GetBuffer(0, __uuidof(ID3D11Resource), &pBackBuffer) );
+		
+    GFX_THROW_INFO( pDevice->CreateRenderTargetView(
         pBackBuffer.Get(),
         nullptr,
         &pTarget
-    );
-	
-	if (result != 0)
-	{
-		throw GFX_EXCEPT(result);
-	}
-	
-    pBackBuffer->Release();
+    ));
 }
 
 void Graphics::EndFrame()
